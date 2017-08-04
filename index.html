@@ -1,0 +1,169 @@
+<html>
+<HEAD>
+<title>AaronTriviaQuestions</title>
+<style type="text/css">
+.questionBlock { display:none; }
+</style>
+
+<script type="text/javascript">
+// From: http://www.webdeveloper.com/forum/showthread.php?t=232698
+// Modified for: http://www.webdeveloper.com/forum/showthread.php?t=253981
+
+
+var answers = new Array(10);      
+answers[0] = "Lake Superior"; 
+answers[1] = "Italy";
+answers[2] = "Katharine Hepburn";
+answers[3] = "Uranus";
+answers[4] = "Pacific";
+answers[5] = "New York Giants";
+answers[6] = "8,000";
+answers[7] = "Bishop";
+answers[8] = "10 million";
+answers[9] = "Sherlock Holmes";
+
+var currentQues = 0;      
+var numQues = answers.length; 
+var numChoi = 3;            
+
+function getScore(form) {
+ var score = 0;                         
+ var currElt;                         
+ var currSelection;
+ for (i=0; i<numQues; i++) {                  
+  currElt = i*numChoi;                      
+  for (j=0; j<numChoi; j++) {                 
+   currSelection = form.elements[currElt + j];          
+   if (currSelection.checked) {                 
+    if (currSelection.value == answers[i]) {          
+    score++;                          
+      break; }                                
+   }
+  }
+ }
+
+
+ score = Math.round(score/numQues*100);             
+ form.percentage.value = score + "&#37;";             
+ return false;                  
+}
+function clearQuestions() {
+  var sel = document.getElementById('questionBlock').getElementsByTagName('div');
+  for (var i=0; i<sel.length; i++) {
+  document.getElementById(sel[i].id).style.display = 'none';
+  }
+}
+function nextQuestion() {
+  clearQuestions();
+  document.getElementById('q'+(currentQues+1)).style.display = 'block'; 
+  currentQues++;  if (currentQues > numQues) { currentQues--; }
+}
+ </script>
+
+</HEAD>
+<BODY>
+<img src="https://res.cloudinary.com/simpleview/image/upload/crm/sonomavalley/homer_trivia01_57690560-5056-b3a8-494d306b27ff9dbf.png">
+<h3>Funny Trivia</h3>
+
+<form name="quiz" onsubmit="return getScore(this)">
+<div id="questionBlock">
+<div id="q1" class="questionBlock">
+1. Name the largest freshwater lake in the world?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q1" value="Lake Superior">Lake Superior</label></li>
+  <li><label><input type="radio" name="q1" value="Nile River">Nile River</label></li>
+  <li><label><input type="radio" name="q1" value="Potomac River">Potomac River</label></li>
+ </ul>
+</div>
+
+<div id="q2" class="questionBlock">
+2. First team to win the World Cup?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q2" value="England">England</label></li>
+  <li><label><input type="radio" name="q2" value="Italy">Italy</label></li>
+  <li><label><input type="radio" name="q2" value="Uruguay">Uruguay</label></li>
+ </ul>
+</div>
+
+<div id="q3" class="questionBlock">
+3. Which actress has won the most Oscars?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q3" value="Katharine Hepburn">Katharine Hepburn</label></li>
+  <li><label><input type="radio" name="q3" value="Kathryn Bigelow">Kathryn Bigelow</label></li>
+  <li><label><input type="radio" name="q3" value="Meryl Streep">Meryl Streep</label></li>
+ </ul>
+</div>
+
+<div id="q4" class="questionBlock">
+4.Name the seventh planet from the sun?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q4" value="Venus">Venus</label></li>
+  <li><label><input type="radio" name="q4" value="Pluto">Pluto</label></li>
+  <li><label><input type="radio" name="q4" value="Uranus">Uranus</label></li>
+ </ul>
+</div>
+
+<div id="q5" class="questionBlock">
+5.Name the World's largest Ocean?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q5" value="Arctic">Arctic</label></li>
+  <li><label><input type="radio" name="q5" value="Pacific">Pacific</label></li>
+  <li><label><input type="radio" name="q5" value="Atlantic">Atlantic</label></li>
+ </ul>
+</div>
+
+<div id="q6" class="questionBlock">
+6.Best Football Team, EVER?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q6" value="Patriots">Patriots</label></li>
+  <li><label><input type="radio" name="q6" value="Cowboys">Cowboys</label></li>
+  <li><label><input type="radio" name="q6" value="New York Giants">New York Giants</label></li>
+ </ul>
+</div>
+
+<div id="q7" class="questionBlock">
+7.What is the diameter of Earth?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q7" value="8,000">8,000</label></li>
+  <li><label><input type="radio" name="q7" value="6,000">6,000</label></li>
+  <li><label><input type="radio" name="q7" value="7,650">7,650</label></li>
+ </ul>
+</div>
+
+<div id="q8" class="questionBlock">
+8.Which chess piece can only move diagonally?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q8" value="Queen">Queen</label></li>
+  <li><label><input type="radio" name="q8" value="Bishop">Bishop</label></li>
+  <li><label><input type="radio" name="q8" value="Knights">Knights</label></li>
+ </ul>
+</div>
+
+<div id="q9" class="questionBlock">
+9.How many bricks is the Empire State Building is made of?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q9" value="10 million">10 million</label></li>
+  <li><label><input type="radio" name="q9" value="20 million">20 million</label></li>
+  <li><label><input type="radio" name="q9" value="16 million">16 million</label></li>
+ </ul>
+</div>
+
+<div id="q10" class="questionBlock">
+10.25% of Americans believe that this imaginary character is a real person?
+ <ul style="margin-top: 1pt">
+  <li><label><input type="radio" name="q10" value="Santa Claus">Santa Claus</label></li>
+  <li><label><input type="radio" name="q10" value="Sherlock Holmes">Sherlock Holmes</label></li>
+  <li><label><input type="radio" name="q10" value="Robin Hood">Robin Hood</label></li>
+ </ul>
+</div>
+
+<div id="q11" class="questionBlock">
+<input type="submit" value="Submit">
+Score = <strong><input type="text" size="5" name="percentage" disabled></strong>
+</div>
+
+<button onclick="nextQuestion()">Next Question</button>
+</div>
+</form>
+</body>
+</html>
